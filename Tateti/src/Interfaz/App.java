@@ -3,6 +3,7 @@ package Interfaz;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 public class App {
 
@@ -28,6 +29,12 @@ public class App {
 	 * Create the application.
 	 */
 	public App() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		initialize();
 	}
 
