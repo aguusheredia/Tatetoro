@@ -65,7 +65,13 @@ public class App {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton btnNewButton = new JButton("Play");
-		btnNewButton.setBounds(180, 30, 90, 25);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		btnNewButton.setBounds(180, 36, 90, 25);
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setFont(new Font("BankGothic Md BT", Font.BOLD, 13));
 		btnNewButton.addActionListener(new ActionListener() {
