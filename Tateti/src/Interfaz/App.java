@@ -70,6 +70,7 @@ public class App {
 			public void mouseClicked(MouseEvent e) {
 				Game game = new Game();
 				game.setVisible(true);
+				frame.setVisible(false);
 			}
 		});
 		btnNewButton.setBounds(180, 36, 90, 25);
@@ -83,15 +84,18 @@ public class App {
 		frame.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("How to play");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				HTP htp = new HTP();
+				htp.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setBounds(162, 100, 126, 25);
 		btnNewButton_1.setFont(new Font("BankGothic Md BT", Font.BOLD, 13));
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Quit");
-		btnNewButton_2.setBackground(Color.BLACK);
-		btnNewButton_2.setFont(new Font("BankGothic Md BT", Font.BOLD, 13));
-		btnNewButton_2.setBounds(180, 170, 90, 25);
-		frame.getContentPane().add(btnNewButton_2);
 	}
 }
