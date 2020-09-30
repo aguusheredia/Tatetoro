@@ -48,14 +48,17 @@ public class HTP extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Frame[] frames = Frame.getFrames();
-				for (Frame fr : frames) {
-					String name = fr.getClass().getName();
-					if(name.equals("Interfaz.Menu")) {
-						fr.setVisible(true);
-						contentPane.setVisible(false);
-					}
-				}
+				Menu menu = new Menu();
+				menu.setVisible(true);
+				contentPane.setVisible(false);
+//				Frame[] frames = Frame.getFrames();
+//				for (Frame fr : frames) {
+//					String name = fr.getClass().getName();
+//					if(name.equals("Interfaz.Menu")) {
+//						fr.setVisible(true);
+//						contentPane.setVisible(false);
+//					}
+//				}
 			}
 		});
 		btnNewButton.setBounds(25, 225, 90, 25);
