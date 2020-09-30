@@ -68,7 +68,8 @@ public class App {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				Game game = new Game();
+				game.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(180, 36, 90, 25);
