@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Frame;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -47,6 +48,14 @@ public class HTP extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Frame[] frames = Frame.getFrames();
+				for (Frame fr : frames) {
+					String name = fr.getClass().getName();
+					if(name.equals("Interfaz.Menu")) {
+						fr.setVisible(true);
+						contentPane.setVisible(false);
+					}
+				}
 			}
 		});
 		btnNewButton.setBounds(25, 225, 90, 25);
