@@ -38,50 +38,52 @@ public class Board {
 		try {
 			setBoardSpace(row, column, player);
 			control(row,column);
+			this.turn++;
 		}
 		catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 	}
 	
 	public boolean gameControl(int n) {
-		
-		if(board[0][0]==n && board[0][1]==n && board[0][2]==n) {
-			return true;
-		}
-		if(board[0][0]==n && board[1][0]==n && board[2][0]==n) {
-			return true;
-		}
-		if(board[0][0]==n && board[1][1]==n && board[2][2]==n) {
-			return true;
-		}
-		if(board[0][1]==n && board[1][1]==n && board[2][1]==n) {
-			return true;
-		}
-		if(board[0][1]==n && board[1][2]==n && board[2][0]==n) {
-			return true;
-		}
-		if(board[0][1]==n && board[1][0]==n && board[2][2]==n) {
-			return true;
-		}
-		if(board[0][2]==n && board[1][2]==n && board[2][2]==n) {
-			return true;
-		}
-		if(board[0][2]==n && board[1][1]==n && board[2][0]==n) {
-			return true;
-		}
-		if(board[1][0]==n && board[1][1]==n && board[1][2]==n) {
-			return true;
-		}
-		if(board[1][0]==n && board[2][1]==n && board[0][2]==n) {
-			return true;
-		}
-		if(board[1][2]==n && board[2][1]==n && board[0][0]==n) {
-			return true;
-		}
-		if(board[2][0]==n && board[2][1]==n && board[2][2]==n) {
-			return true;
+		if(this.turn > 5) {
+			if(board[0][0]==n && board[0][1]==n && board[0][2]==n) {
+				return true;
+			}
+			if(board[0][0]==n && board[1][0]==n && board[2][0]==n) {
+				return true;
+			}
+			if(board[0][0]==n && board[1][1]==n && board[2][2]==n) {
+				return true;
+			}
+			if(board[0][1]==n && board[1][1]==n && board[2][1]==n) {
+				return true;
+			}
+			if(board[0][1]==n && board[1][2]==n && board[2][0]==n) {
+				return true;
+			}
+			if(board[0][1]==n && board[1][0]==n && board[2][2]==n) {
+				return true;
+			}
+			if(board[0][2]==n && board[1][2]==n && board[2][2]==n) {
+				return true;
+			}
+			if(board[0][2]==n && board[1][1]==n && board[2][0]==n) {
+				return true;
+			}
+			if(board[1][0]==n && board[1][1]==n && board[1][2]==n) {
+				return true;
+			}
+			if(board[1][0]==n && board[2][1]==n && board[0][2]==n) {
+				return true;
+			}
+			if(board[1][2]==n && board[2][1]==n && board[0][0]==n) {
+				return true;
+			}
+			if(board[2][0]==n && board[2][1]==n && board[2][2]==n) {
+				return true;
+			}
 		}
 		return false;
 	}
