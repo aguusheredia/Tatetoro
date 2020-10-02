@@ -50,15 +50,6 @@ public class HTP extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				Menu menu = new Menu();
 				menu.setVisible(true);
-				contentPane.setVisible(false);
-//				Frame[] frames = Frame.getFrames();
-//				for (Frame fr : frames) {
-//					String name = fr.getClass().getName();
-//					if(name.equals("Interfaz.Menu")) {
-//						fr.setVisible(true);
-//						contentPane.setVisible(false);
-//					}
-//				}
 			}
 		});
 		btnNewButton.setBounds(25, 225, 90, 25);
