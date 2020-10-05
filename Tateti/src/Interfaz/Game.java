@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import Logica.Tablero;
+import Logica.Board;
 
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
@@ -15,7 +15,7 @@ import java.awt.Font;
 public class Game {
 
 	private JFrame frame;
-	private Tablero tablero = new Tablero();
+	private Board board = new Board();
 	
 	/**
 	 * Launch the application.
@@ -59,7 +59,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 				
 				pressButton(Button1, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);		//Accion a realizar una vez que se encuentra un ganador
 			}
 		});
@@ -74,7 +74,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pressButton(Button4, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 			}
 		});
@@ -89,7 +89,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 
 				pressButton(Button7, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 
 			}
@@ -106,7 +106,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 					
 				pressButton(Button2, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 			}
 		});
@@ -122,7 +122,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 				
 				pressButton(Button3, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 			}
 		});
@@ -138,7 +138,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 
 				pressButton(Button5, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 			}
 		});
@@ -154,7 +154,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 					
 				pressButton(Button6, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 			}
 		});
@@ -170,7 +170,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 					
 				pressButton(Button8, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 
 			}
@@ -187,7 +187,7 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 
 				pressButton(Button9, posicion);
-				if (tablero.getGanador())
+				if (board.getGanador())
 					System.exit(0);
 			}
 		});
@@ -196,7 +196,7 @@ public class Game {
 	}
 	
 	public void pressButton(JButton button, int position) {
-		String ficha = tablero.pressButton(position);
+		String ficha = board.pressButton(position);
 		if ( ficha != "") {
 			button.setText(ficha);
 		}
