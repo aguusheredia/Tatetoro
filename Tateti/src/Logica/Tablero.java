@@ -10,25 +10,11 @@ public class Tablero {
     private int turno = 0;
     private int x;
     private int y;
-
-    public void imprimirTablero() {
-
-        System.out.println("Tablero de juego");
-        for (int i = 0; i < ROWS; i++) {
-
-            for (int j = 0; j < COLUMNS; j++) {
-                System.out.print("" + board[i][j] + "");
-                if (j < COLUMNS - 1) {
-                    System.out.print(" â•‘ ");
-                }
-
-            }
-            System.out.println("");
-            if (i < COLUMNS - 1) {
-                System.out.println("â•�   â•�   â•�");
-            }
-        }
-
+    private boolean ganador;
+    
+    public Tablero () {
+    	turno = 0;
+    	ganador = false;
     }
 
     public void conocerCoordenadas(int valor) {
@@ -89,12 +75,8 @@ public class Tablero {
     }
 
     public void asignarFichaTablero(String ficha, int valor) {
-    	try {
     	conocerCoordenadas(valor);
-        board[x][y] = ficha;}
-    	catch(Exception e) {
-    		System.out.println("Lugar ocupado");
-    	}
+        board[x][y] = ficha;
     }
 
     public boolean gana(String ficha) {
@@ -107,6 +89,7 @@ public class Tablero {
                 }
             }
             if (cont == 3) {
+            	this.ganador = true;
                 return true;
             }
         }
@@ -120,42 +103,39 @@ public class Tablero {
                 }
             }
             if (cont == 3) {
+            	this.ganador = true;
                 return true;
             }
         }
 
         //diagonal
         if ((board[0][0]==ficha) && (board[1][1]==ficha) && (board[2][2]==ficha)) {
+        	this.ganador = true;
             return true;
         }
         if ((board[0][2]==ficha) && (board[1][1]==ficha) && (board[2][0]==ficha)) {
+        	this.ganador = true;
             return true;
         }
         
         //parte tatetoro
         if((board[0][1]== ficha) && (board[1][0]==ficha) && (board[2][2]==ficha)) {
+        	this.ganador = true;
         	return true;        	
         }
         if((board[0][1]== ficha) && (board[1][2]==ficha) && (board[2][0]==ficha)) {
+        	this.ganador = true;
         	return true;        	
         }
         if((board[0][0]== ficha) && (board[1][2]==ficha) && (board[2][1]==ficha)) {
+        	this.ganador = true;
         	return true;        	
         }
         if((board[0][2]== ficha) && (board[1][0]==ficha) && (board[2][1]==ficha)) {
+        	this.ganador = true;
         	return true;        	
         }
         	
-        
-//        	C
-//        F	0 | x | 0
-//        	x | 0 | x
-//        	x | 0 | x 
-//
-//        	x | 0 | x
-//        	x | 0 | x
-//        	0 | x | 0
-
         return false;
 
     }
@@ -173,6 +153,24 @@ public class Tablero {
 	}
     public int getTurno() {
 		return turno;
+	}
+
+	public String pressButton(int position) {
+		if (comprobarEspacioDisponible(position)) {
+			String ficha = devolverFicha();
+			asignarFichaTablero(ficha, position);
+			if (gana(ficha)) 
+				System.out.println("El ganador es: " + ficha);
+			
+			aumentarTurno();
+			return ficha;
+		}
+		
+		return "";
+	}
+	
+	public boolean getGanador () {
+		return this.ganador;
 	}
     
 	

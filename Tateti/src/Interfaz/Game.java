@@ -12,12 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.Window;
 
 public class Game {
 
 	private JFrame frame;
-	private Tablero tabla;
-
+	private Tablero tablero = new Tablero();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -45,7 +46,7 @@ public class Game {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Tablero tablero = new Tablero();
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,14 +59,10 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button1.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+				
+				pressButton(Button1, posicion);
+				if (tablero.getGanador())
+					System.exit(0);		//Accion a realizar una vez que se encuentra un ganador
 			}
 		});
 		Button1.setBounds(0, 0, 145, 92);
@@ -78,14 +75,9 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button4.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+				pressButton(Button4, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 			}
 		});
 		Button4.setBounds(0, 93, 146, 82);
@@ -98,14 +90,9 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button7.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+				pressButton(Button7, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 
 			}
 		});
@@ -119,14 +106,10 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button2.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+					
+				pressButton(Button2, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 			}
 		});
 		Button2.setBounds(144, 0, 146, 92);
@@ -139,14 +122,10 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button3.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+				
+				pressButton(Button3, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 			}
 		});
 		Button3.setBounds(289, 0, 145, 92);
@@ -159,14 +138,10 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button5.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+
+				pressButton(Button5, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 			}
 		});
 		Button5.setBounds(144, 93, 146, 82);
@@ -179,14 +154,10 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button6.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+					
+				pressButton(Button6, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 			}
 		});
 		Button6.setBounds(289, 93, 145, 82);
@@ -199,14 +170,10 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button8.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+					
+				pressButton(Button8, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 
 			}
 		});
@@ -220,17 +187,20 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (tablero.comprobarEspacioDisponible(posicion)) {
-					Button9.setText(tablero.devolverFicha());
-					tablero.asignarFichaTablero(tablero.devolverFicha(), posicion);
-					if (tablero.gana(tablero.devolverFicha())) {
-						System.out.println("Ganador" + tablero.devolverFicha());
-					}
-					tablero.aumentarTurno();
-				}
+
+				pressButton(Button9, posicion);
+				if (tablero.getGanador())
+					System.exit(0);
 			}
 		});
 		Button9.setBounds(289, 175, 145, 88);
 		frame.getContentPane().add(Button9);
+	}
+	
+	public void pressButton(JButton button, int position) {
+		String ficha = tablero.pressButton(position);
+		if ( ficha != "") {
+			button.setText(ficha);
+		}
 	}
 }
