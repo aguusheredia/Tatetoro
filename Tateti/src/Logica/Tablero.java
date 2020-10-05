@@ -2,24 +2,12 @@ package Logica;
 
 import java.util.Scanner;
 
-//public class Tablero {
-//	private int [][] board;
-//	
-//	public Tablero(){
-//		board = new int[3][3];
-//	}
-//	
-//	public int getSpace(int i,int j) {
-//		return board[i][j];
-//	}
-//}
-
 public class Tablero {
 
     private final int ROWS = 3;
     private final int COLUMNS = 3;
-    char[][] board = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
-
+    String[][] board = {{"1", "2", "3"}, {"4", "5", "6"}, {"7","8", "9"}};
+    private int turno = 0;
     private int x;
     private int y;
 
@@ -31,13 +19,13 @@ public class Tablero {
             for (int j = 0; j < COLUMNS; j++) {
                 System.out.print("" + board[i][j] + "");
                 if (j < COLUMNS - 1) {
-                    System.out.print(" ║ ");
+                    System.out.print(" â•‘ ");
                 }
 
             }
             System.out.println("");
             if (i < COLUMNS - 1) {
-                System.out.println("═   ═   ═");
+                System.out.println("â•�   â•�   â•�");
             }
         }
 
@@ -83,7 +71,7 @@ public class Tablero {
                 y = 2;
                 break;
             default:
-                System.out.println("No existe una posición");
+                throw new RuntimeException("No hay existe cordenada");
 
         }
 
@@ -92,9 +80,7 @@ public class Tablero {
     public boolean comprobarEspacioDisponible(int valor) {
 
         conocerCoordenadas(valor);
-        boolean disponible = true;
-
-        if (board[x][y] == 'X' || board[x][y] == 'O') {
+        if (board[x][y] == "X" || board[x][y] == "O") {
             return false;
         } else {
             return true;
@@ -102,12 +88,16 @@ public class Tablero {
 
     }
 
-    public void asignarFichaTablero(char ficha, int valor) {
-        conocerCoordenadas(valor);
-        board[x][y] = ficha;
+    public void asignarFichaTablero(String ficha, int valor) {
+    	try {
+    	conocerCoordenadas(valor);
+        board[x][y] = ficha;}
+    	catch(Exception e) {
+    		System.out.println("Lugar ocupado");
+    	}
     }
 
-    public boolean gana(char ficha) {
+    public boolean gana(String ficha) {
         for (int i = 0; i < board.length; i++)//horizontales
         {
             int cont = 0; //contador para saber cuantas fichas iguales hay
@@ -146,15 +136,15 @@ public class Tablero {
         if((board[0][1]== ficha) && (board[1][0]==ficha) && (board[2][2]==ficha)) {
         	return true;        	
         }
-//        if((board[0][1]== ficha) && (board[1][2]==ficha) && (board[2][0]==ficha)) {
-//        	return true;        	
-//        }
-//        if((board[0][0]== ficha) && (board[1][2]==ficha) && (board[2][1]==ficha)) {
-//        	return true;        	
-//        }
-//        if((board[0][2]== ficha) && (board[1][0]==ficha) && (board[2][1]==ficha)) {
-//        	return true;        	
-//        }
+        if((board[0][1]== ficha) && (board[1][2]==ficha) && (board[2][0]==ficha)) {
+        	return true;        	
+        }
+        if((board[0][0]== ficha) && (board[1][2]==ficha) && (board[2][1]==ficha)) {
+        	return true;        	
+        }
+        if((board[0][2]== ficha) && (board[1][0]==ficha) && (board[2][1]==ficha)) {
+        	return true;        	
+        }
         	
         
 //        	C
@@ -170,4 +160,20 @@ public class Tablero {
 
     }
 
+	public String devolverFicha() {
+		if(turno % 2 == 0) {
+			return "X";
+		}
+		else {
+			return "O";
+		}
+	}
+	public void aumentarTurno() {
+		turno++;
+	}
+    public int getTurno() {
+		return turno;
+	}
+    
+	
 }
