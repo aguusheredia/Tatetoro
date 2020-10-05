@@ -1,11 +1,8 @@
 package Logica;
 
-import java.util.Scanner;
-
 public class Tablero {
 
-    private final int ROWS = 3;
-    private final int COLUMNS = 3;
+ 
     String[][] board = {{"1", "2", "3"}, {"4", "5", "6"}, {"7","8", "9"}};
     private int turno = 0;
     private int x;
