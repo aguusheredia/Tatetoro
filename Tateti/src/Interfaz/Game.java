@@ -1,5 +1,6 @@
 package Interfaz;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,6 +11,9 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 
 public class Game {
@@ -46,7 +50,8 @@ public class Game {
 	private void initialize() {
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setBackground(Color.BLACK);
+		frame.setBounds(100, 100, 472, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
@@ -59,11 +64,12 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 				
 				pressButton(Button1, posicion);
-				if (board.getGanador())
-					System.exit(0);		//Accion a realizar una vez que se encuentra un ganador
+				if (board.getGanador()) {
+					System.exit(0);
+				}							//Accion a realizar una vez que se encuentra un ganador
 			}
 		});
-		Button1.setBounds(0, 0, 145, 92);
+		Button1.setBounds(0, 135, 145, 85);
 		frame.getContentPane().add(Button1);
 
 		JButton Button4 = new JButton("");
@@ -74,11 +80,12 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				pressButton(Button4, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 			}
 		});
-		Button4.setBounds(0, 93, 146, 82);
+		Button4.setBounds(0, 230, 145, 85);
 		frame.getContentPane().add(Button4);
 		JButton Button7 = new JButton("");
 		Button7.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -89,12 +96,13 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 
 				pressButton(Button7, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 
 			}
 		});
-		Button7.setBounds(0, 175, 146, 86);
+		Button7.setBounds(0, 325, 145, 85);
 		frame.getContentPane().add(Button7);
 
 		JButton Button2 = new JButton("");
@@ -106,11 +114,12 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 					
 				pressButton(Button2, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 			}
 		});
-		Button2.setBounds(144, 0, 146, 92);
+		Button2.setBounds(155, 135, 145, 85);
 		frame.getContentPane().add(Button2);
 
 		JButton Button3 = new JButton("");
@@ -122,11 +131,12 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 				
 				pressButton(Button3, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 			}
 		});
-		Button3.setBounds(289, 0, 145, 92);
+		Button3.setBounds(310, 135, 145, 85);
 		frame.getContentPane().add(Button3);
 
 		JButton Button5 = new JButton("");
@@ -138,11 +148,12 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 
 				pressButton(Button5, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 			}
 		});
-		Button5.setBounds(144, 93, 146, 82);
+		Button5.setBounds(155, 230, 145, 85);
 		frame.getContentPane().add(Button5);
 
 		JButton Button6 = new JButton("");
@@ -154,11 +165,12 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 					
 				pressButton(Button6, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 			}
 		});
-		Button6.setBounds(289, 93, 145, 82);
+		Button6.setBounds(310, 230, 145, 85);
 		frame.getContentPane().add(Button6);
 
 		JButton Button8 = new JButton("");
@@ -170,15 +182,19 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 					
 				pressButton(Button8, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
-
+				}
 			}
 		});
-		Button8.setBounds(145, 175, 145, 86);
+		Button8.setBounds(155, 325, 145, 85);
 		frame.getContentPane().add(Button8);
 
 		JButton Button9 = new JButton("");
+		Button9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		Button9.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		Button9.addMouseListener(new MouseAdapter() {
 			int posicion = 9;
@@ -187,18 +203,51 @@ public class Game {
 			public void mouseClicked(MouseEvent e) {
 
 				pressButton(Button9, posicion);
-				if (board.getGanador())
+				if (board.getGanador()) {
 					System.exit(0);
+				}
 			}
 		});
-		Button9.setBounds(289, 175, 145, 88);
+		Button9.setBounds(310, 325, 145, 85);
 		frame.getContentPane().add(Button9);
+		
+		JLabel lblNewLabel = new JLabel("TURN :");
+		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(10, 11, 65, 20);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("0");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(85, 11, 21, 20);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("PLAYER :");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(330, 11, 85, 20);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("X");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel_3.setBounds(425, 11, 21, 20);
+		frame.getContentPane().add(lblNewLabel_3);
 	}
 	
 	public void pressButton(JButton button, int position) {
 		String ficha = board.pressButton(position);
 		if ( ficha != "") {
+			if(ficha == "X") {
+				button.setForeground(Color.BLUE);
+			}
+			else {
+				button.setForeground(Color.RED);
+			}
 			button.setText(ficha);
+			button.setEnabled(false);
 		}
 	}
 }
