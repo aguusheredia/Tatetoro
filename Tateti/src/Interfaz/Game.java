@@ -7,10 +7,12 @@ import javax.swing.JFrame;
 
 import Logica.Board;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -54,6 +56,33 @@ public class Game {
 		frame.setBounds(100, 100, 472, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		Image image1 = new ImageIcon(this.getClass().getResource("/circle.png")).getImage();
+		
+		JLabel lblNewLabel = new JLabel("TURN :");
+		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setBounds(10, 11, 65, 20);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel(String.valueOf(board.getTurn()));
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel_1.setBounds(85, 11, 21, 20);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("PLAYER :");
+		lblNewLabel_2.setForeground(Color.WHITE);
+		lblNewLabel_2.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel_2.setBounds(330, 11, 85, 20);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("X");
+		lblNewLabel_3.setForeground(Color.WHITE);
+		lblNewLabel_3.setFont(new Font("Arial Black", Font.BOLD, 15));
+		lblNewLabel_3.setBounds(425, 11, 21, 20);
+		frame.getContentPane().add(lblNewLabel_3);
 
 		JButton Button1 = new JButton("");
 		Button1.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -63,7 +92,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				pressButton(Button1, posicion);
+				pressButton(Button1, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}							//Accion a realizar una vez que se encuentra un ganador
@@ -79,7 +108,7 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				pressButton(Button4, posicion);
+				pressButton(Button4, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -95,7 +124,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				pressButton(Button7, posicion);
+				pressButton(Button7, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -113,7 +142,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					
-				pressButton(Button2, posicion);
+				pressButton(Button2, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -130,7 +159,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				pressButton(Button3, posicion);
+				pressButton(Button3, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -147,7 +176,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				pressButton(Button5, posicion);
+				pressButton(Button5, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -164,7 +193,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					
-				pressButton(Button6, posicion);
+				pressButton(Button6, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -181,7 +210,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					
-				pressButton(Button8, posicion);
+				pressButton(Button8, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -202,7 +231,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				pressButton(Button9, posicion);
+				pressButton(Button9, posicion, lblNewLabel_1, lblNewLabel_3);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -210,34 +239,10 @@ public class Game {
 		});
 		Button9.setBounds(310, 325, 145, 85);
 		frame.getContentPane().add(Button9);
-		
-		JLabel lblNewLabel = new JLabel("TURN :");
-		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(10, 11, 65, 20);
-		frame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("0");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Arial Black", Font.BOLD, 15));
-		lblNewLabel_1.setBounds(85, 11, 21, 20);
-		frame.getContentPane().add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_2 = new JLabel("PLAYER :");
-		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setFont(new Font("Arial Black", Font.BOLD, 15));
-		lblNewLabel_2.setBounds(330, 11, 85, 20);
-		frame.getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblNewLabel_3 = new JLabel("X");
-		lblNewLabel_3.setForeground(Color.WHITE);
-		lblNewLabel_3.setFont(new Font("Arial Black", Font.BOLD, 15));
-		lblNewLabel_3.setBounds(425, 11, 21, 20);
-		frame.getContentPane().add(lblNewLabel_3);
 	}
+		
 	
-	public void pressButton(JButton button, int position) {
+	public void pressButton(JButton button, int position,JLabel label1,JLabel label2) {
 		String ficha = board.pressButton(position);
 		if ( ficha != "") {
 			if(ficha == "X") {
@@ -247,7 +252,9 @@ public class Game {
 				button.setForeground(Color.RED);
 			}
 			button.setText(ficha);
-			button.setEnabled(false);
+			//button.setEnabled(false);
+			label1.setText(String.valueOf(board.getTurn()));
+			label2.setText(board.returnPlayer());
 		}
 	}
 }
