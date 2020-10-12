@@ -58,7 +58,7 @@ public class Images extends JFrame {
 		ImageIcon avatar1Icon = new ImageIcon("Images/avatar1.png");
 		avatar1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				selecIcon(board, avatar1Icon, title);
 			}
 		});
@@ -70,7 +70,7 @@ public class Images extends JFrame {
 		ImageIcon avatar2Icon = new ImageIcon("Images/avatar2.png");
 		avatar2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				selecIcon(board, avatar2Icon, title);
 			}
 		});
@@ -82,7 +82,7 @@ public class Images extends JFrame {
 		ImageIcon avatar3Icon = new ImageIcon("Images/avatar3.png");
 		avatar3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				selecIcon(board, avatar3Icon, title);
 			}
 		});
@@ -94,7 +94,7 @@ public class Images extends JFrame {
 		ImageIcon avatar4Icon = new ImageIcon("Images/avatar4.png");
 		avatar4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				selecIcon(board, avatar4Icon, title);
 			}
 		});
@@ -106,7 +106,7 @@ public class Images extends JFrame {
 		ImageIcon avatar5Icon = new ImageIcon("Images/avatar5.png");
 		avatar5.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				selecIcon(board, avatar5Icon, title);
 			}
 		});
@@ -118,7 +118,7 @@ public class Images extends JFrame {
 		ImageIcon avatar6Icon = new ImageIcon("Images/avatar6.png");
 		avatar6.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				selecIcon(board, avatar6Icon, title);
 			}
 		});

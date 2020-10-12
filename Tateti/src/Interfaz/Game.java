@@ -88,12 +88,14 @@ public class Game extends JFrame {
 			int posicion = 1;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				
 				pressButton(board, Button1, posicion, lblNewLabel_1, lblNewLabel_3,avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}							//Accion a realizar una vez que se encuentra un ganador
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}					
 			}
 		});
 		Button1.setBounds(0, 135, 145, 85);
@@ -105,11 +107,13 @@ public class Game extends JFrame {
 			int posicion = 4;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				pressButton(board, Button4, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 			}
 		});
 		Button4.setBounds(0, 230, 145, 85);
@@ -120,12 +124,14 @@ public class Game extends JFrame {
 			int posicion = 7;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 
 				pressButton(board, Button7, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 
 			}
 		});
@@ -138,12 +144,14 @@ public class Game extends JFrame {
 			int posicion = 2;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 					
 				pressButton(board, Button2, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 			}
 		});
 		Button2.setBounds(155, 135, 145, 85);
@@ -155,12 +163,14 @@ public class Game extends JFrame {
 			int posicion = 3;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 				
 				pressButton(board, Button3, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 			}
 		});
 		Button3.setBounds(310, 135, 145, 85);
@@ -172,12 +182,14 @@ public class Game extends JFrame {
 			int posicion = 5;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 
 				pressButton(board, Button5, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 			}
 		});
 		Button5.setBounds(155, 230, 145, 85);
@@ -189,12 +201,14 @@ public class Game extends JFrame {
 			int posicion = 6;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 					
 				pressButton(board, Button6, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 			}
 		});
 		Button6.setBounds(310, 230, 145, 85);
@@ -206,12 +220,14 @@ public class Game extends JFrame {
 			int posicion = 8;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 					
 				pressButton(board, Button8, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
-				}
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();				
+					}
 			}
 		});
 		Button8.setBounds(155, 325, 145, 85);
@@ -223,11 +239,13 @@ public class Game extends JFrame {
 			int posicion = 9;
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mousePressed(MouseEvent e) {
 
 				pressButton(board, Button9, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
-					System.exit(0);
+					JFrame win = new Win(board);
+					win.setVisible(true);
+					dispose();
 				}
 			}
 		});
@@ -239,7 +257,7 @@ public class Game extends JFrame {
 	public void pressButton(Board board, JButton button, int position,JLabel label1,JLabel label2, JLabel avatar) {
 		String ficha = board.pressButton(position);
 		if ( ficha != "") {
-			if(ficha == "X") {
+			if(ficha.equals("X")) {
 				button.setIcon(cross);
 				avatar.setIcon(board.getPlayer2());
 			}

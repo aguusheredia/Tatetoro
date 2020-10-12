@@ -153,7 +153,7 @@ public class Board {
 			String player = returnPlayer();
 			makeMove(player, position);
 			if (controlGame(player)) { 
-				System.out.println("El ganador es: " + player);
+				return player;
 			}
 			passTurn();
 			return player;
