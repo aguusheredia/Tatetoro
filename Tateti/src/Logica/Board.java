@@ -1,5 +1,7 @@
 package Logica;
 
+import javax.swing.ImageIcon;
+
 public class Board {
 
  
@@ -8,6 +10,8 @@ public class Board {
     private int x;
     private int y;
     private boolean winner;
+    private ImageIcon player1;
+    private ImageIcon player2;
     
     public Board () {
     	this.board = new String[][]{{"1", "2", "3"}, {"4", "5", "6"}, {"7","8","9"}};
@@ -159,6 +163,22 @@ public class Board {
 	
 	public boolean getGanador () {
 		return this.winner;
+	}
+	
+	public ImageIcon getPlayer1() {
+		return player1;
+	}
+
+	public void setPlayer1(ImageIcon player1) {
+		this.player1 = player1;
+	}
+
+	public ImageIcon getPlayer2() {
+		return player2;
+	}
+
+	public void setPlayer2(ImageIcon player2) {
+		this.player2 = player2;
 	}
     
 	

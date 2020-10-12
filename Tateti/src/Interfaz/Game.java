@@ -2,27 +2,26 @@ package Interfaz;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
-import Logica.Board;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Font;
 
+import Logica.Board;
 
-public class Game {
+public class Game extends JFrame {
 
-	private JFrame frame;
-	private Board board = new Board();
+	private JPanel contentPane;
+	private ImageIcon cross;
+	private ImageIcon circle;
 	
+	
+
 	/**
 	 * Launch the application.
 	 */
@@ -30,8 +29,8 @@ public class Game {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Game window = new Game();
-					window.frame.setVisible(true);
+					Game frame = new Game(null);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -40,49 +39,48 @@ public class Game {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
-	public Game() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	public Game(Board board) {
+		setBounds(200, 200, 472, 450);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		contentPane = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setBackground(Color.BLACK);
+		contentPane.setLayout(null);
 		
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.setBounds(100, 100, 472, 450);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		
-		Image image1 = new ImageIcon(this.getClass().getResource("/circle.png")).getImage();
+		this.cross = new ImageIcon ("Images/cross.png");
+		this.circle = new ImageIcon ("Images/circle.png");
 		
 		JLabel lblNewLabel = new JLabel("TURN :");
 		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 15));
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setBounds(10, 11, 65, 20);
-		frame.getContentPane().add(lblNewLabel);
+		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel(String.valueOf(board.getTurn()));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Arial Black", Font.BOLD, 15));
 		lblNewLabel_1.setBounds(85, 11, 21, 20);
-		frame.getContentPane().add(lblNewLabel_1);
+		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("PLAYER :");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		lblNewLabel_2.setFont(new Font("Arial Black", Font.BOLD, 15));
 		lblNewLabel_2.setBounds(330, 11, 85, 20);
-		frame.getContentPane().add(lblNewLabel_2);
+		contentPane.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("X");
 		lblNewLabel_3.setForeground(Color.WHITE);
 		lblNewLabel_3.setFont(new Font("Arial Black", Font.BOLD, 15));
 		lblNewLabel_3.setBounds(425, 11, 21, 20);
-		frame.getContentPane().add(lblNewLabel_3);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel avatar = new JLabel("New label");
+		avatar.setBounds(185, 50, 75, 75);
+		avatar.setIcon(board.getPlayer1());
+		contentPane.add(avatar);
 
 		JButton Button1 = new JButton("");
 		Button1.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -92,14 +90,14 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				pressButton(Button1, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button1, posicion, lblNewLabel_1, lblNewLabel_3,avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}							//Accion a realizar una vez que se encuentra un ganador
 			}
 		});
 		Button1.setBounds(0, 135, 145, 85);
-		frame.getContentPane().add(Button1);
+		contentPane.add(Button1);
 
 		JButton Button4 = new JButton("");
 		Button4.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -108,14 +106,14 @@ public class Game {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				pressButton(Button4, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button4, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button4.setBounds(0, 230, 145, 85);
-		frame.getContentPane().add(Button4);
+		contentPane.add(Button4);
 		JButton Button7 = new JButton("");
 		Button7.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		Button7.addMouseListener(new MouseAdapter() {
@@ -124,7 +122,7 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				pressButton(Button7, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button7, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
@@ -132,7 +130,7 @@ public class Game {
 			}
 		});
 		Button7.setBounds(0, 325, 145, 85);
-		frame.getContentPane().add(Button7);
+		contentPane.add(Button7);
 
 		JButton Button2 = new JButton("");
 		Button2.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -142,14 +140,14 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					
-				pressButton(Button2, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button2, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button2.setBounds(155, 135, 145, 85);
-		frame.getContentPane().add(Button2);
+		contentPane.add(Button2);
 
 		JButton Button3 = new JButton("");
 		Button3.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -159,14 +157,14 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				pressButton(Button3, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button3, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button3.setBounds(310, 135, 145, 85);
-		frame.getContentPane().add(Button3);
+		contentPane.add(Button3);
 
 		JButton Button5 = new JButton("");
 		Button5.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -176,14 +174,14 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				pressButton(Button5, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button5, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button5.setBounds(155, 230, 145, 85);
-		frame.getContentPane().add(Button5);
+		contentPane.add(Button5);
 
 		JButton Button6 = new JButton("");
 		Button6.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -193,14 +191,14 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					
-				pressButton(Button6, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button6, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button6.setBounds(310, 230, 145, 85);
-		frame.getContentPane().add(Button6);
+		contentPane.add(Button6);
 
 		JButton Button8 = new JButton("");
 		Button8.setFont(new Font("Tahoma", Font.PLAIN, 50));
@@ -210,20 +208,16 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 					
-				pressButton(Button8, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button8, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button8.setBounds(155, 325, 145, 85);
-		frame.getContentPane().add(Button8);
+		contentPane.add(Button8);
 
 		JButton Button9 = new JButton("");
-		Button9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		Button9.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		Button9.addMouseListener(new MouseAdapter() {
 			int posicion = 9;
@@ -231,30 +225,31 @@ public class Game {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				pressButton(Button9, posicion, lblNewLabel_1, lblNewLabel_3);
+				pressButton(board, Button9, posicion, lblNewLabel_1, lblNewLabel_3, avatar);
 				if (board.getGanador()) {
 					System.exit(0);
 				}
 			}
 		});
 		Button9.setBounds(310, 325, 145, 85);
-		frame.getContentPane().add(Button9);
-	}
+		contentPane.add(Button9);
 		
+	}
 	
-	public void pressButton(JButton button, int position,JLabel label1,JLabel label2) {
+	public void pressButton(Board board, JButton button, int position,JLabel label1,JLabel label2, JLabel avatar) {
 		String ficha = board.pressButton(position);
 		if ( ficha != "") {
 			if(ficha == "X") {
-				button.setForeground(Color.BLUE);
+				button.setIcon(cross);
+				avatar.setIcon(board.getPlayer2());
 			}
 			else {
-				button.setForeground(Color.RED);
+				button.setIcon(circle);
+				avatar.setIcon(board.getPlayer1());
 			}
-			button.setText(ficha);
-			//button.setEnabled(false);
 			label1.setText(String.valueOf(board.getTurn()));
 			label2.setText(board.returnPlayer());
 		}
 	}
+
 }
