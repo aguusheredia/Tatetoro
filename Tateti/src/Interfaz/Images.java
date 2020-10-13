@@ -22,22 +22,6 @@ public class Images extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Images frame = new Images(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public Images(Board board) {
@@ -59,7 +43,7 @@ public class Images extends JFrame {
 		avatar1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selecIcon(board, avatar1Icon, title);
+				selectIcon(board, avatar1Icon, title);
 			}
 		});
 		avatar1.setBounds(46, 48, 75, 75);
@@ -71,7 +55,7 @@ public class Images extends JFrame {
 		avatar2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selecIcon(board, avatar2Icon, title);
+				selectIcon(board, avatar2Icon, title);
 			}
 		});
 		avatar2.setBounds(170, 48, 75, 75);
@@ -83,7 +67,7 @@ public class Images extends JFrame {
 		avatar3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selecIcon(board, avatar3Icon, title);
+				selectIcon(board, avatar3Icon, title);
 			}
 		});
 		avatar3.setBounds(306, 48, 75, 75);
@@ -95,7 +79,7 @@ public class Images extends JFrame {
 		avatar4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selecIcon(board, avatar4Icon, title);
+				selectIcon(board, avatar4Icon, title);
 			}
 		});
 		avatar4.setBounds(46, 138, 75, 75);
@@ -107,7 +91,7 @@ public class Images extends JFrame {
 		avatar5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selecIcon(board, avatar5Icon, title);
+				selectIcon(board, avatar5Icon, title);
 			}
 		});
 		avatar5.setBounds(170, 138, 75, 75);
@@ -119,7 +103,7 @@ public class Images extends JFrame {
 		avatar6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				selecIcon(board, avatar6Icon, title);
+				selectIcon(board, avatar6Icon, title);
 			}
 		});
 		avatar6.setBounds(306, 138, 75, 75);
@@ -128,7 +112,7 @@ public class Images extends JFrame {
 		
 	}
 	
-	public void selecIcon (Board board, ImageIcon avatar, JLabel title) {
+	public void selectIcon (Board board, ImageIcon avatar, JLabel title) {
 		if (board.getPlayer1() == null) {
 			board.setPlayer1(avatar);
 			title.setText("Select O Icon");

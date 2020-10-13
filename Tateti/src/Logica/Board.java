@@ -19,6 +19,7 @@ public class Board {
     	this.winner = false;
     }
 
+    //Dada una posicion, devuelve las coordenadas en el tablero
     public void getCoordinates(int valor) {
         switch(valor){
             case 1:
@@ -62,6 +63,7 @@ public class Board {
         }
     }
 
+    //Dada una posicion, verifica si dicha posicion se encuentra ocupada
     public boolean checkCoordinate(int value) {
         getCoordinates(value);
         if (board[x][y] == "X" || board[x][y] == "O") {
@@ -72,11 +74,13 @@ public class Board {
         }
     }
 
+    //Dado un jugador y una posicion, de ser posible, coloca su jugada en el tablero
     public void makeMove(String player, int value) {
     	getCoordinates(value);
         board[x][y] = player;
     }
 
+    //Dado un jugador, verifica si el mismo gano el juego 
     public boolean controlGame(String player) {
     	if(turn>=4) {
 	    	if ((board[0][0]==player) && (board[0][1]==player) && (board[0][2]==player)) {
@@ -131,6 +135,7 @@ public class Board {
         return false;
     }
 
+    //Retorna quien es el encargado del turno actual
 	public String returnPlayer() {
 		if(turn % 2 == 0) {
 			return "X";
@@ -140,6 +145,7 @@ public class Board {
 		}
 	}
 	
+	//Pasa al siguiente turno
 	public void passTurn() {
 		turn++;
 	}
@@ -148,6 +154,8 @@ public class Board {
 		return turn;
 	}
 
+    
+    //Dada una posicion presiona, se encarga de hacer las acciones necesarias
 	public String pressButton(int position) {
 		if (checkCoordinate(position)) {
 			String player = returnPlayer();

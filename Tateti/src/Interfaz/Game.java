@@ -20,23 +20,6 @@ public class Game extends JFrame {
 	private ImageIcon cross;
 	private ImageIcon circle;
 	
-	
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Game frame = new Game(null);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -49,6 +32,7 @@ public class Game extends JFrame {
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setLayout(null);
 		
+		//Imagenes que se imprimiran en el juego
 		this.cross = new ImageIcon ("Images/cross.png");
 		this.circle = new ImageIcon ("Images/circle.png");
 		
@@ -254,6 +238,8 @@ public class Game extends JFrame {
 		
 	}
 	
+	//Al presionar un boton, la interfaz imprime en pantalla el signo necesario, se encarga de cambiar el avatar y actualizar el
+	//N° de turno y a quien le corresponde
 	public void pressButton(Board board, JButton button, int position,JLabel label1,JLabel label2, JLabel avatar) {
 		String ficha = board.pressButton(position);
 		if ( ficha != "") {

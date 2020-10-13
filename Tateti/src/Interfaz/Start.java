@@ -20,22 +20,6 @@ public class Start extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Start frame = new Start();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 * @param game 
 	 */
@@ -47,17 +31,18 @@ public class Start extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		JButton start = new JButton("Start");
+		start.addMouseListener(new MouseAdapter() {
 			@Override
+			//Al presionar el boton start, crea el menu de imagenes del juego
 			public void mouseClicked(MouseEvent e) {
 				JFrame images = new Images (new Board());
 				images.setVisible(true);
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(99, 227, 229, 23);
-		contentPane.add(btnNewButton);
+		start.setBounds(99, 227, 229, 23);
+		contentPane.add(start);
 		
 		JLabel background = new JLabel("");
 		background.setBounds(0, 0, 435, 260);
